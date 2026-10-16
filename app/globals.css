@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand palette */
+  --background: #faf8f5; /* Paper */
+  --foreground: #14161a; /* Ink */
+  --muted: #57534c;
+  --card: #efe7da; /* Sand */
+  --sand-light: #f4eee4;
+  --white: #ffffff;
+  --line: #e2d9ca;
+  --line-strong: #dcd2c1;
+  --line-dashed: #cfc3ae;
+  --accent: #da000c; /* Gib Red */
+  --accent-dark: #b0000a;
+  --accent-soft: #fbe9e7;
+  --amber: #e8a317;
+  --amber-soft: #fbefd2;
+  --amber-line: #f0d58a;
+  --amber-ink: #4a3800;
+  --green: #1f8a4c;
+  --disabled: #e6e1d8;
+  --disabled-ink: #8f8a81;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-sand: var(--card);
+  --color-sand-light: var(--sand-light);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-dashed: var(--line-dashed);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-soft: var(--accent-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-amber-line: var(--amber-line);
+  --color-amber-ink: var(--amber-ink);
+  --color-green: var(--green);
+  --color-disabled: var(--disabled);
+  --color-disabled-ink: var(--disabled-ink);
+  --spacing: 4px; /* exact 8px grid: p-2 = 8px, p-4 = 16px */
+  --radius-card: 16px;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-size: 17px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.55;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Small uppercase section labels use the body face with wide tracking. */
+@utility label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
